@@ -28,6 +28,11 @@
   text-align: left;
 }
 
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 input {
   font-size: 20px;
 }
@@ -38,10 +43,6 @@ ul {
 
 li {
   list-style-type: none;
-}
-
-.error {
-  color: #722439;
 }
 
 li span.delete-item {
@@ -57,7 +58,15 @@ li:hover span.delete-item {
   visibility: visible;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.error {
+  color: #722439;
+}
+
+.footer a {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.footer a.active {
+  font-weight: bold;
 }

@@ -4,6 +4,7 @@ import './App.css';
 import {
   TodoForm,
   TodoList,
+  Footer,
 } from './components/todo';
 import {
   addTodo,
@@ -93,6 +94,7 @@ class App extends Component {
             handleRemove={this.handleRemove}
             todos={this.state.todos}
           />
+          <Footer />
         </div>
       </div>
     );
