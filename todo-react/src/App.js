@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import {
@@ -13,6 +14,7 @@ import {
   toggleTodo,
   updateTodo,
   removeTodo,
+  filterTodos,
 } from './lib/todoHelpers';
 import {
   pipe,
@@ -27,7 +29,11 @@ class App extends Component {
       {id: generateId(), name: 'Ship It', isComplete: false},
     ],
     currentTodo: '',
-  };
+  }
+
+  static contextTypes = {
+    route: PropTypes.string,
+  }
 
   handleRemove = (id, event) => {
     event.preventDefault();
@@ -59,23 +65,24 @@ class App extends Component {
       currentTodo: '',
       errorMessage: '',
     });
-  };
+  }
 
   handleEmptySubmit = (event) => {
     event.preventDefault();
     this.setState({
       errorMessage: 'Please supply todo name',
     });
-  };
+  }
 
   handleInputChange = (event) => {
     this.setState({
       currentTodo: event.target.value,
     });
-  };
+  }
 
   render() {
     const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
+    const displayTodos = filterTodos(this.state.todos, this.context.route);
     return (
       <div className="App">
         <header className="App-header">
@@ -92,7 +99,7 @@ class App extends Component {
           <TodoList
             handleToggle={this.handleToggle}
             handleRemove={this.handleRemove}
-            todos={this.state.todos}
+            todos={displayTodos}
           />
           <Footer />
         </div>
