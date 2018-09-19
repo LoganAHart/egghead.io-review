@@ -11,6 +11,7 @@ import {
   findById,
   toggleTodo,
   updateTodo,
+  removeTodo,
 } from './lib/todoHelpers';
 import {
   pipe,
@@ -26,6 +27,14 @@ class App extends Component {
     ],
     currentTodo: '',
   };
+
+  handleRemove = (id, event) => {
+    event.preventDefault();
+    const updatedTodos = removeTodo(this.state.todos, id);
+    this.setState({
+      todos: updatedTodos,
+    });
+  }
 
   handleToggle = (id) => {
     const getUpdatedTodos = pipe(findById, toggleTodo,partial(updateTodo, this.state.todos));
@@ -81,6 +90,7 @@ class App extends Component {
           />
           <TodoList
             handleToggle={this.handleToggle}
+            handleRemove={this.handleRemove}
             todos={this.state.todos}
           />
         </div>
