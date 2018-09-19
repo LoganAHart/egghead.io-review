@@ -1,0 +1,12 @@
+{
+  "name": "react-beginner",
+  "version": "1.0.0",
+  "description": "Tutorial to review basic concepts",
+  "main": "index.js",
+  "author": "Logan Hart",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1"
+  }
+}
