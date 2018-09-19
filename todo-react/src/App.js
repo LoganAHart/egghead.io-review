@@ -20,19 +20,21 @@ import {
   pipe,
   partial,
 } from './lib/utils';
+import { loadTodos } from './lib/todoService';
 
 class App extends Component {
   state = {
-    todos: [
-      {id: generateId(), name: 'Learn JSX', isComplete: true},
-      {id: generateId(), name: 'Build an Awesome App', isComplete: false},
-      {id: generateId(), name: 'Ship It', isComplete: false},
-    ],
+    todos: [],
     currentTodo: '',
   }
 
   static contextTypes = {
     route: PropTypes.string,
+  }
+
+  componentDidMount() {
+    loadTodos()
+      .then(todos => this.setState({ todos }));
   }
 
   handleRemove = (id, event) => {

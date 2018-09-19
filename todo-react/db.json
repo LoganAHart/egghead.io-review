@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": "d3579aa0-bc66-11e8-bf11-b1980439c0cf",
+      "name": "Setup Server",
+      "isComplete": true
+    },
+    {
+      "id": "d3579aa1-bc66-11e8-bf11-b1980439c0cf",
+      "name": "Start Server",
+      "isComplete": true
+    },
+    {
+      "id": "d3579aa2-bc66-11e8-bf11-b1980439c0cf",
+      "name": "Connect to Server",
+      "isComplete": false
+    },
+    {
+      "id": "029b5db0-bc67-11e8-8295-cda2643c0ccc",
+      "name": "Setup fetch",
+      "isComplete": false
+    }
+  ]
+}
