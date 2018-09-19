@@ -12,6 +12,10 @@ import {
   toggleTodo,
   updateTodo,
 } from './lib/todoHelpers';
+import {
+  pipe,
+  partial,
+} from './lib/utils';
 
 class App extends Component {
   state = {
