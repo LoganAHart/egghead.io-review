@@ -20,7 +20,10 @@ import {
   pipe,
   partial,
 } from './lib/utils';
-import { loadTodos } from './lib/todoService';
+import {
+  loadTodos,
+  createTodo,
+} from './lib/todoService';
 
 class App extends Component {
   state = {
@@ -67,6 +70,8 @@ class App extends Component {
       currentTodo: '',
       errorMessage: '',
     });
+    createTodo(newTodo)
+      .then((todo) => console.log(todo));
   }
 
   handleEmptySubmit = (event) => {
