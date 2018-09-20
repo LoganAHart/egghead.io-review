@@ -24,6 +24,7 @@ import {
   loadTodos,
   createTodo,
   saveTodo,
+  destroyTodo,
 } from './lib/todoService';
 
 class App extends Component {
@@ -47,6 +48,8 @@ class App extends Component {
     this.setState({
       todos: updatedTodos,
     });
+    destroyTodo(id)
+      .then(() => this.showTempMessage('Todo Removed'));
   }
 
   handleToggle = (id) => {
