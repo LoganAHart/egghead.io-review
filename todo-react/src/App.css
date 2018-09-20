@@ -62,6 +62,10 @@ li:hover span.delete-item {
   color: #722439;
 }
 
+.success {
+  color: green;
+}
+
 .footer a {
   padding-left: 2px;
   padding-right: 2px;
