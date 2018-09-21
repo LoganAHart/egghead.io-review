@@ -1,9 +1,39 @@
 {
   "todos": [
-    { "id": 1, "name": "Configure JSON server", "isComplete": true },
-    { "id": 2, "name": "Start JSON server", "isComplete": true },
-    { "id": 3, "name": "Load data from server", "isComplete": true },
-    { "id": 4, "name": "Add records to server", "isComplete": false },
-    { "id": 5, "name": "Update records on server", "isComplete": false }
+    {
+      "id": 1,
+      "name": "Configure JSON server",
+      "isComplete": true
+    },
+    {
+      "id": 2,
+      "name": "Start JSON server",
+      "isComplete": true
+    },
+    {
+      "id": 3,
+      "name": "Load data from server",
+      "isComplete": true
+    },
+    {
+      "id": 4,
+      "name": "Add records to server",
+      "isComplete": false
+    },
+    {
+      "id": 5,
+      "name": "Update records on server",
+      "isComplete": false
+    },
+    {
+      "name": "New Todo",
+      "isComplete": false,
+      "id": 6
+    },
+    {
+      "name": "New Todo",
+      "isComplete": false,
+      "id": 7
+    }
   ]
 }
