@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
@@ -27,7 +26,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => state;
-const mapDispatchToProps = (dispatch) => bindActionCreators({updateCurrent}, dispatch);
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
-export default ConnectedApp;
+export default connect(
+  (state => state),
+  { updateCurrent }
+)(App);
