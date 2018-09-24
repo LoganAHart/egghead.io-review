@@ -77,3 +77,12 @@ span.delete-item button {
 li:hover span.delete-item {
   visibility: visible;
 }
+
+.footer-component {
+  text-align: center;
+}
+
+.footer-component a {
+  padding-left: 5px;
+  padding-right: 5px;
+}
