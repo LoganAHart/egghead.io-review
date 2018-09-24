@@ -24,31 +24,6 @@
       "id": 5,
       "name": "Update records on server",
       "isComplete": true
-    },
-    {
-      "name": "New Todo",
-      "isComplete": true,
-      "id": 6
-    },
-    {
-      "name": "New Todo",
-      "isComplete": true,
-      "id": 7
-    },
-    {
-      "name": "Another Todo",
-      "isComplete": false,
-      "id": 8
-    },
-    {
-      "name": "Testing Message",
-      "isComplete": true,
-      "id": 9
-    },
-    {
-      "name": "Testing Message Again",
-      "isComplete": false,
-      "id": 10
     }
   ]
 }

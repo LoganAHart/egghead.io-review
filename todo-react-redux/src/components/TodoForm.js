@@ -21,6 +21,7 @@ class TodoForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
+          className="todo-form-input"
           type="text"
           onChange={this.handleInputChange}
           value={currentTodo}
