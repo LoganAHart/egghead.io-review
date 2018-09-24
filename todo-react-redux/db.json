@@ -13,26 +13,26 @@
     {
       "id": 3,
       "name": "Load data from server",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "id": 4,
       "name": "Add records to server",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 5,
       "name": "Update records on server",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "name": "New Todo",
-      "isComplete": false,
+      "isComplete": true,
       "id": 6
     },
     {
       "name": "New Todo",
-      "isComplete": false,
+      "isComplete": true,
       "id": 7
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "name": "Testing Message",
-      "isComplete": false,
+      "isComplete": true,
       "id": 9
     },
     {
