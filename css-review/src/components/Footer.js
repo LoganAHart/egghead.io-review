@@ -2,28 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setVisibilityFilter } from '../actions';
 
-const Link = ({
+const Radio = ({
   active,
   children,
-  onClick
+  onChange,
 }) => {
-  if (active) {
-    return <span>{children}</span>;
-  }
 
   return (
-    <a href='#'
-       onClick={e => {
-         e.preventDefault();
-         onClick();
-       }}
-    >
-      {children}
-    </a>
+    <label className="filter">
+      <input 
+        checked={active}
+        type="radio"
+        name="filter"
+        className="filter__radio"
+        onChange={e => {
+          onChange();
+        }}
+      />
+      <span className={`filter__label--${children.toLowerCase()}`}>
+        {children}
+      </span>
+    </label>
   );
 };
 
-const mapStateToLinkProps = (
+const mapStateToRadioProps = (
   state,
   ownProps
 ) => {
@@ -34,12 +37,12 @@ const mapStateToLinkProps = (
   };
 };
 
-const mapDispatchToLinkProps = (
+const mapDispatchToRadioProps = (
   dispatch,
   ownProps
 ) => {
   return {
-    onClick: () => {
+    onChange: () => {
       dispatch(
         setVisibilityFilter(ownProps.filter)
       );
@@ -47,27 +50,24 @@ const mapDispatchToLinkProps = (
   };
 }
 
-const FilterLink = connect(
-  mapStateToLinkProps,
-  mapDispatchToLinkProps
-)(Link);
+const FilterRadio = connect(
+  mapStateToRadioProps,
+  mapDispatchToRadioProps
+)(Radio);
 
 export default () => (
-  <p>
-    Show:
-    {' '}
-    <FilterLink filter='SHOW_ALL'>
+  <fieldset className="filters">
+    <legend className="filters__title">Show:</legend>
+    <FilterRadio filter='SHOW_ALL'>
       All
-    </FilterLink>
-    {', '}
-    <FilterLink filter='SHOW_ACTIVE'>
+    </FilterRadio>
+    <FilterRadio filter='SHOW_ACTIVE'>
       Active
-    </FilterLink>
-    {', '}
-    <FilterLink filter='SHOW_COMPLETED'>
+    </FilterRadio>
+    <FilterRadio filter='SHOW_COMPLETED'>
       Completed
-    </FilterLink>
-  </p>
+    </FilterRadio>
+  </fieldset>
 );
 
 
