@@ -4,7 +4,7 @@ import VisibleTodoList from './VisibleTodoList';
 import Footer from './Footer';
 
 export default () => (
-  <div>
+  <div className="todo-app">
     <AddTodo />
     <VisibleTodoList />
     <Footer />
