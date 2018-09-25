@@ -13,7 +13,7 @@
     {
       "id": 3,
       "name": "Load data from server",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 4,
@@ -23,7 +23,7 @@
     {
       "id": 5,
       "name": "Update records on server",
-      "isComplete": true
+      "isComplete": false
     }
   ]
 }
