@@ -4,6 +4,7 @@ import {
   fetchTodos,
   toggleTodo,
   deleteTodo,
+  getVisibleTodos,
 } from '../reducers/todo';
 
 const TodoItem = ({ id, name, isComplete, toggleTodo, deleteTodo }) => (
@@ -44,6 +45,6 @@ class TodoList extends Component {
 }
 
 export default connect(
-  (state) => ({ todos: state.todo.todos }),
+  (state, ownProps) => ({ todos: getVisibleTodos(state.todo.todos, ownProps.filter) }),
   { fetchTodos, toggleTodo, deleteTodo }
 )(TodoList);

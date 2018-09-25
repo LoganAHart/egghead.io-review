@@ -13,7 +13,7 @@ export const showMessage = (msg) => ({
 });
 
 export default function(state = '', action) {
-  switch(action.type) {
+  switch (action.type) {
     case MESSAGE_SHOW:
       return action.payload;
     case TODO_ADD:

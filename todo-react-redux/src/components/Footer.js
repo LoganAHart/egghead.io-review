@@ -8,4 +8,3 @@ export default (props) => (
     <Link to="/completed">Completed</Link>
   </div>
 );
-
