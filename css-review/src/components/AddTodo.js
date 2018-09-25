@@ -6,14 +6,27 @@ const AddTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
-      <input ref={node => {
-        input = node;
-      }} />
-      <button onClick={() => {
-        dispatch(addTodo(input.value));
-        input.value = '';
-      }}>
+    <div className="add-todo">
+      <input
+        className="add-todo__input"
+        placeholder="new todo"
+        ref={node => {
+          input = node;
+        }}
+        onKeyUp={(e) => {
+          if (e.keyCode === 13) {
+            dispatch(addTodo(input.value));
+            input.value = '';
+          }
+        }}
+      />
+      <button
+        className="add-todo__button"
+        onClick={() => {
+          dispatch(addTodo(input.value));
+          input.value = '';
+        }}
+      >
         Add Todo
       </button>
     </div>
