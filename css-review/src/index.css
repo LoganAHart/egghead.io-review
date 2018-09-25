@@ -140,3 +140,38 @@ body {
 .filter__radio:checked + [class^="filter__label"] {
   color: #fff;
 }
+[class^="filter__label"]::before,
+.filter__label--all::after {
+  content: '';
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  position: absolute;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  background: #647380;
+  left: 0;
+}
+.filter__radio {
+  position: absolute;
+  opacity: 0;
+}
+.filter__label--all {
+  padding-left: 21px;
+}
+.filter__label--all:after {
+  left: 5px;
+}
+.filter__radio:checked + .filter__label--all::before {
+  background: #af544f;
+}
+.filter__radio:checked + .filter__label--all::after {
+  background: #16a085;
+}
+.filter__radio:checked + .filter__label--active::before {
+  background: #af544f;
+}
+.filter__radio:checked + .filter__label--completed::before {
+  background: #16a085;
+}
