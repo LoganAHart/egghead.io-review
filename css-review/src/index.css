@@ -176,6 +176,21 @@ body {
   background: #16a085;
 }
 
+.todo-transition-enter {
+  height: 0;
+}
+.todo-transition-enter.todo-transition-enter-active {
+  height: 80px;
+  transition: height 70ms ease-in;
+}
+.todo-transition-leave {
+  height: 80px;
+}
+.todo-transition-leave.todo-transition-leave-active {
+  height: 0;
+  transition: height 70ms ease-in;
+}
+
 @media only screen and (min-width: 730px) {
   .container {
     max-width: 720px;
