@@ -105,3 +105,38 @@ body {
   letter-spacing: 2px;
   opacity: 1;
 }
+
+.filters {
+  height: 80px;
+  width: calc(100% + 20px);
+  box-sizing: border-box;
+  padding: 32px 35px 0;
+  background: #2c3e50;
+  color: #ecf0f1;
+  font-weight: 700;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px 3px 0 0;
+  border: 0;
+}
+.filters__title, .filter {
+  display: inline-block;
+  margin-right: 30px;
+}
+.filters__title {
+  float: left;
+}
+.filter {
+  cursor: pointer;
+}
+[class^="filter__label"] {
+  position: relative;
+  display: inline-block;
+  padding-left: 16px;
+  color: rgba(236, 240, 241, 0.3);
+}
+[class^="filter__label"]:hover {
+  color: #ccc;
+}
+.filter__radio:checked + [class^="filter__label"] {
+  color: #fff;
+}
