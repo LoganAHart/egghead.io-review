@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const _ = require('lodash');
+const engines = require('consolidate');
+
 const app = express();
 
 const users = []
@@ -13,17 +15,13 @@ fs.readFile('users.json', {encoding: 'utf8'}, (err, data) => {
   });
 });
 
-app.get('/', (req, res) => {
-  let buffer = '';
-  users.forEach((user) => {
-    buffer += `<a href="/${user.username}">${user.name.full}</a><br>`;
-  });
-  res.send(buffer);
-});
+app.engine('hbs', engines.handlebars);
 
-app.get(/big.*/, (req, res, next) => {
-  console.log('BIG USER ACCESS');
-  next();
+app.set('views', './views');
+app.set('view engine', 'hbs');
+
+app.get('/', (req, res) => {
+  res.render('index', { users: users });
 });
 
 app.get('/:username', (req, res) => {
