@@ -1,0 +1,19 @@
+{
+  "name": "express-review",
+  "version": "1.0.0",
+  "description": "quick express refresher from egghead.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Logan Hart",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
