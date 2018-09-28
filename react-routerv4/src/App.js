@@ -10,6 +10,7 @@ import {
   App4,
   App5,
   App6,
+  App7,
 } from './components'
 
-export default App6;
+export default App7;
