@@ -1,0 +1,9 @@
+a {
+  margin: 5px;
+}
+a, a:visited {
+  color: cornflowerblue;
+}
+a.active {
+  color: blue;
+}
