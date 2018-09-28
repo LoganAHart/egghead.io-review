@@ -4,38 +4,13 @@ const path = require('path');
 const _ = require('lodash');
 const engines = require('consolidate');
 const bodyParser = require('body-parser');
+const JSONStream = require('JSONStream');
+
+
+const helpers = require('./helpers');
+const userRoute = require('./username');
 
 const app = express();
-
-const getUserFilePath = (username) => {
-  return path.join(__dirname, 'users', username) + '.json';
-}
-
-const getUser = (username) => {
-  const user = JSON.parse(fs.readFileSync(getUserFilePath(username), {encoding: 'utf8'}));
-  user.name.full = _.startCase(`${user.name.first} ${user.name.last}`)
-  _.keys(user.location).forEach((key) => {
-    user.location[key] = _.startCase(user.location[key])
-  });
-  return user;
-}
-
-const saveUser = (username, data) => {
-  const fp = getUserFilePath(username);
-  fs.unlinkSync(fp); // delete the file
-  fs.writeFileSync(fp, JSON.stringify(data, null, 2), {encoding: 'utf8'});
-}
-
-const verifyUser = (req, res, next) => {
-  const fp = getUserFilePath(req.params.username);
-  fs.exists(fp, (yes) => {
-    if (yes) {
-      next();
-    } else {
-      res.redirect(`/error/${req.params.username}`);
-    }
-  });
-}
 
 app.engine('hbs', engines.handlebars);
 
@@ -52,6 +27,7 @@ app.get('/favicon.ico', (req, res) => {
 app.get('/', (req, res) => {
   const users = [];
   fs.readdir('users', (err, files) => {
+    if (err) { throw err; }
     files.forEach((file) => {
       fs.readFile(path.join(__dirname, 'users', file), {encoding: 'utf8'}, (err, data) => {
         const user = JSON.parse(data);
@@ -71,41 +47,27 @@ app.get('*.json', (req, res) => {
 
 app.get('/data/:username', (req, res) => {
   const username = req.params.username;
-  const user = getUser(username);
-  res.json(user);
+  const readable = fs.createReadStream(`./users/${username}.json`)
+  readable.pipe(res);
+});
+
+app.get('users/by/:gender', (req, res) => {
+  const gender = req.params.gender;
+  const readable = fs.createReadStream('./users.json');
+  //not working... same as tutorial, look at docs
+  readable
+    .pipe(JSONStream.parse('*', (user) => {
+      if (user.gender === gender)  { return user.name; }
+    }))
+    .pipe(JSONStream.stringify('[\n  ', ',\n  ', '\n]\n'))
+    .pipe(res);
 });
 
 app.get('/error/:username', (req, res) => {
   res.status(404).send(`No user named ${req.params.username} found.`);
 });
 
-app.all('/:username', (req, res, next) => {
-  console.log(req.method, 'for', req.params.username);
-  next();
-});
-
-app.get('/:username', verifyUser, (req, res) => {
-  const username = req.params.username;
-  const user = getUser(username);
-  res.render('user', {
-    user: user,
-    address: user.location
-  });
-});
-
-app.put('/:username', (req, res) => {
-  const username = req.params.username;
-  const user = getUser(username);
-  user.location = req.body;
-  saveUser(username, user);
-  res.end();
-});
-
-app.delete('/:username', (req, res) => {
-  const fp = getUserFilePath(req.params.username);
-  fs.unlinkSync(fp); // delete the file
-  res.sendStatus(200);
-});
+app.use('/:username', userRoute);
 
 const server = app.listen(3000, () => {
   console.log(`Server running at http://localhost:${server.address().port}`);
