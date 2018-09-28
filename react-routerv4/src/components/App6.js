@@ -1,0 +1,24 @@
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+
+import './styles/App6.css';
+
+export const App6 = (props) => (
+  <Router>
+    <div>
+      <Route 
+        path="/:a(\d{2}-\d{2}-\d{4})/:b(\.[A-Za-z]+)"
+        render={
+        ({ match }) => (
+          <h1>
+            paramA: {match.params.a}<br />
+            paramB: {match.params.b}
+          </h1>
+        )} 
+      />
+    </div>
+  </Router>
+);

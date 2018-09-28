@@ -8,6 +8,8 @@ import {
 import {
   App3,
   App4,
+  App5,
+  App6,
 } from './components'
 
-export default App4;
+export default App6;
