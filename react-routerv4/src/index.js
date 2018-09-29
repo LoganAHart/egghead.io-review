@@ -9,8 +9,9 @@ import {
   App7,
   App8,
   App9,
+  App10,
 } from './components'
 
 
-ReactDOM.render(<App9 />, document.getElementById('root'));
+ReactDOM.render(<App10 />, document.getElementById('root'));
 registerServiceWorker();

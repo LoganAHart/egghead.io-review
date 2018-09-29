@@ -11,8 +11,7 @@ export const App6 = (props) => (
     <div>
       <Route 
         path="/:a(\d{2}-\d{2}-\d{4})/:b(\.[A-Za-z]+)"
-        render={
-        ({ match }) => (
+        render={({ match }) => (
           <h1>
             paramA: {match.params.a}<br />
             paramB: {match.params.b}
