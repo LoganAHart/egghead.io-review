@@ -4,6 +4,7 @@ import { App5 } from './App5';
 import { App6 } from './App6';
 import { App7 } from './App7';
 import { App8 } from './App8';
+import { App9 } from './App9';
 
 export {
   App3,
@@ -12,4 +13,5 @@ export {
   App6,
   App7,
   App8,
+  App9,
 };
