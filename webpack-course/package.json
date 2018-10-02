@@ -1,0 +1,22 @@
+{
+  "name": "webpack-course",
+  "version": "1.0.0",
+  "description": "webpack 4 course from udemy",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config=config/webpack.dev.js",
+    "build": "webpack --config=config/webpack.dev.js"
+  },
+  "author": "Logan Hart",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^1.0.0",
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
