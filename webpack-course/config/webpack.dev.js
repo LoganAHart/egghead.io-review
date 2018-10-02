@@ -1,23 +1,23 @@
-const path = require("path");
+const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: "./src/main.js",
+    main: ['./src/main.js']
   },
-  mode: "development",
+  mode: 'development',
   output: {
-    filename: "[name]-bundle.js",
-    path: path.resolve(__dirname, "../dist"),
+    filename: '[name]-bundle.js',
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/'
   },
   devServer: {
-    contentBase: "dist",
+    contentBase: 'dist',
     overlay: true,
-    hot: true,
     stats: {
-      colors: true,
-    },
+      colors: true
+    }
   },
   devtool: 'source-map',
   module: {
@@ -27,42 +27,44 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
-          },
-        ],
+            loader: 'babel-loader'
+          }
+        ]
       },
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          { loader: 'css-loader' }
+        ]
       },
       {
         test: /\.jpg$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "images/[name].[ext]",
-            },
-          },
-        ],
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
-            options: {
-              attrs: ['img:src'],
-            },
-          },
-        ],
-      },
-    ],
+            loader: 'html-loader'
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HTMLWebpackPlugin({
-      template: './src/index.html',
-    }),
-  ],
+      template: './src/index.html'
+    })
+  ]
 }
