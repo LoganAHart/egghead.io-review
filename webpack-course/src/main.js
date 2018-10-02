@@ -1,5 +1,4 @@
-require("babel-runtime/regenerator")
-require("./main.css");
-require("./images/link.jpg");
-require("./index.html");
-
+require('babel-runtime/regenerator');
+require('webpack-hot-middleware/client');
+require('./main.css');
+require('./index.html');

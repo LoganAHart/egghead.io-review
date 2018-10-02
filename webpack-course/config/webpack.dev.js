@@ -1,17 +1,22 @@
-const path = require("path")
+const path = require("path");
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    main: "./src/main.js"
+    main: "./src/main.js",
   },
   mode: "development",
   output: {
     filename: "[name]-bundle.js",
-    path: path.resolve(__dirname, "../dist")
+    path: path.resolve(__dirname, "../dist"),
   },
   devServer: {
     contentBase: "dist",
-    overlay: true
+    overlay: true,
+    hot: true,
+    stats: {
+      colors: true,
+    },
   },
   module: {
     rules: [
@@ -20,13 +25,13 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader"
-          }
-        ]
+            loader: "babel-loader",
+          },
+        ],
       },
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
       {
         test: /\.jpg$/,
@@ -34,10 +39,10 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "images/[name].[ext]"
-            }
-          }
-        ]
+              name: "images/[name].[ext]",
+            },
+          },
+        ],
       },
       {
         test: /\.html$/,
@@ -45,20 +50,23 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "[name].[ext]"
-            }
+              name: "[name].[ext]",
+            },
           },
           {
             loader: "extract-loader",
             options: {
-              publicPath: "../"
-            }
+              publicPath: "../",
+            },
           },
           {
-            loader: "html-loader"
-          }
-        ]
-      }
-    ]
-  }
+            loader: "html-loader",
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 }
